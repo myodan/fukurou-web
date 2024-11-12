@@ -9,7 +9,14 @@ type Props = Readonly<{
 
 export const WebtoonList: FC<Props> = ({ webtoons }) => {
 	return (
-		<Grid templateColumns={"repeat(7, 1fr)"} gap="2">
+		<Grid
+			templateColumns={{
+				base: "repeat(3, 1fr)",
+				md: "repeat(5, 1fr)",
+				lg: "repeat(7, 1fr)",
+			}}
+			gap="2"
+		>
 			<For each={webtoons}>
 				{(webtoon) => <WebtoonListItem key={webtoon.id} webtoon={webtoon} />}
 			</For>

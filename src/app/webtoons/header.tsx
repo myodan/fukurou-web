@@ -31,13 +31,16 @@ const WebtoonHeaderRoot = chakra("header", {
 const WebtoonHeaderContainer = chakra(Container, {
 	base: {
 		display: "flex",
+		justifyContent: "center",
+		md: {
+			justifyContent: "start",
+		},
 	},
 });
 
 const WebtoonHeaderItemList = chakra("div", {
 	base: {
 		display: "flex",
-		justifyContent: "space-between",
 		alignItems: "stretch",
 		gap: "4",
 	},
