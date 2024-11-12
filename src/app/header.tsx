@@ -2,6 +2,7 @@ import { Container, Flex, HStack, Link } from "@chakra-ui/react";
 import NextLink from "next/link";
 import type { FC } from "react";
 import { Logo } from "~/components/logo";
+import { Button } from "~/components/ui/button";
 import { ColorModeButton } from "~/components/ui/color-mode";
 
 export const Header: FC = () => {
@@ -29,7 +30,15 @@ export const Header: FC = () => {
 						<NextLink href="/webtoons">웹툰</NextLink>
 					</Link>
 				</HStack>
-				<ColorModeButton />
+				<HStack>
+					<NextLink href="/auth/sign-in" passHref>
+						<Button variant="outline">로그인</Button>
+					</NextLink>
+					<NextLink href="/auth/sign-up" passHref>
+						<Button>가입하기</Button>
+					</NextLink>
+					<ColorModeButton />
+				</HStack>
 			</Container>
 		</Flex>
 	);
