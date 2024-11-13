@@ -5,6 +5,8 @@ import { cookies } from "next/headers";
 
 export interface Payload {
 	sub: number;
+	iat: number;
+	exp: number;
 	username: string;
 	avatarUrl: string | null;
 	role: string;
@@ -44,8 +46,16 @@ export async function signIn(credentials: Credentials) {
 	}
 
 	const { accessToken }: { accessToken: string } = await response.json();
+	const decodedToken = jwtDecode<Payload>(accessToken);
 
-	cookieStore.set("access-token", accessToken);
+	cookieStore.set({
+		name: "access-token",
+		value: accessToken,
+		httpOnly: true,
+		secure: true,
+		sameSite: "strict",
+		expires: decodedToken.exp * 1000,
+	});
 }
 
 export async function signOut() {
