@@ -2,7 +2,7 @@ import { Flex, Image, Text } from "@chakra-ui/react";
 import NextImage from "next/image";
 import NextLink from "next/link";
 import type { FC } from "react";
-import type { Episode } from "~/libs/api/fukurou";
+import type { Episode } from "~/libs/api";
 
 type Props = Readonly<{
 	episode: Episode;

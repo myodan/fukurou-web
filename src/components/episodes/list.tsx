@@ -1,6 +1,6 @@
 import { Flex, For } from "@chakra-ui/react";
 import type { FC } from "react";
-import type { Episode } from "~/libs/api/fukurou";
+import type { Episode } from "~/libs/api";
 import { EpisodeListItem } from "./item";
 
 type Props = Readonly<{

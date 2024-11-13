@@ -1,9 +1,9 @@
 import { Button, Container, Flex } from "@chakra-ui/react";
 import { Plus } from "lucide-react";
 import type { FC } from "react";
-import { getEpisodes, getWebtoon } from "~/libs/api/fukurou";
-import { WebtoonDetail } from "./detail";
-import { EpisodeList } from "./list";
+import { EpisodeList } from "~/components/episodes/list";
+import { WebtoonDetail } from "~/components/webtoons/detail";
+import { getEpisodes, getWebtoon } from "~/libs/api";
 
 type Props = Readonly<{
 	params: Promise<{ id: string }>;

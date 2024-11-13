@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const SignInFormSchema = z.object({
+export const signInSchema = z.object({
 	username: z
 		.string()
 		.min(6, "사용자 이름은 최소 6자 이상이어야 합니다.")
@@ -16,4 +16,4 @@ export const SignInFormSchema = z.object({
 		),
 });
 
-export type SignInFormFileds = z.infer<typeof SignInFormSchema>;
+export type SignInFileds = z.infer<typeof signInSchema>;

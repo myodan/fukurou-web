@@ -1,6 +1,6 @@
 import { For, Grid } from "@chakra-ui/react";
 import type { FC } from "react";
-import type { Webtoon } from "~/libs/api/fukurou";
+import type { Webtoon } from "~/libs/api";
 import { WebtoonListItem } from "./item";
 
 type Props = Readonly<{

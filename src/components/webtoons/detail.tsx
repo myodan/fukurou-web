@@ -1,7 +1,7 @@
 import { Flex, Heading, Image, Text } from "@chakra-ui/react";
 import NextImage from "next/image";
 import type { FC } from "react";
-import type { Webtoon } from "~/libs/api/fukurou";
+import type { Webtoon } from "~/libs/api";
 
 type Props = Readonly<{
 	webtoon: Webtoon;

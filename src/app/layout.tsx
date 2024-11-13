@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import type { FC, ReactNode } from "react";
+import { Header } from "~/components/header";
 import { Provider } from "~/components/ui/provider";
 import { Toaster } from "~/components/ui/toaster";
-import { Header } from "./header";
 
 const pretendard = localFont({
 	src: "./fonts/PretendardVariable.woff2",

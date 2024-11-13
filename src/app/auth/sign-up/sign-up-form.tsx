@@ -5,15 +5,13 @@ import { PasswordInput } from "~/components/ui/password-input";
 
 export const SignUpForm = () => {
 	return (
-		<Stack gap="6">
-			<Stack gap="4">
-				<Field label="사용자 이름">
-					<Input type="text" />
-				</Field>
-				<Field label="암호">
-					<PasswordInput />
-				</Field>
-			</Stack>
+		<Stack as={"form"} gap="4">
+			<Field label="사용자 이름">
+				<Input type="text" />
+			</Field>
+			<Field label="암호">
+				<PasswordInput />
+			</Field>
 			<Button>회원가입</Button>
 		</Stack>
 	);
