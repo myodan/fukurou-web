@@ -1,7 +1,8 @@
-import { Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { Flex, For, HStack, Heading, Image, Text } from "@chakra-ui/react";
 import NextImage from "next/image";
 import type { FC } from "react";
 import type { Webtoon } from "~/libs/api";
+import { Tag } from "../ui/tag";
 
 type Props = Readonly<{
 	webtoon: Webtoon;
@@ -9,15 +10,20 @@ type Props = Readonly<{
 
 export const WebtoonDetail: FC<Props> = ({ webtoon }) => {
 	return (
-		<Flex height="64" gap="4">
-			<Flex height="full" aspectRatio={3 / 4} position="relative">
+		<Flex minHeight="64" gap="4">
+			<Flex height="64" aspectRatio={3 / 4} position="relative">
 				<Image rounded="md" objectFit="cover" asChild>
 					<NextImage src={webtoon.thumbnailUrl} alt="thumbnail" fill />
 				</Image>
 			</Flex>
-			<Flex flexDirection="column" gap="2">
+			<Flex flexDirection="column" gap="2" flexGrow="1">
 				<Heading>{webtoon.title}</Heading>
 				<Text whiteSpace="pre-wrap">{webtoon.synopsis}</Text>
+				<HStack gap="1" flexWrap="wrap">
+					<For each={webtoon.tags}>
+						{(tag) => <Tag key={tag.id}>{tag.name}</Tag>}
+					</For>
+				</HStack>
 			</Flex>
 		</Flex>
 	);
