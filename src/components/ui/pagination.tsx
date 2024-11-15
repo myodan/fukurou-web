@@ -10,11 +10,8 @@ import {
 	usePaginationContext,
 } from "@chakra-ui/react";
 import { forwardRef, useMemo } from "react";
-import {
-	HiChevronLeft,
-	HiChevronRight,
-	HiMiniEllipsisHorizontal,
-} from "react-icons/hi2";
+
+import { ChevronLeftIcon, ChevronRightIcon, EllipsisIcon } from "lucide-react";
 import { LinkButton } from "./link-button";
 
 interface ButtonVariantMap {
@@ -73,7 +70,7 @@ export const PaginationEllipsis = forwardRef<
 	return (
 		<ChakraPagination.Ellipsis ref={ref} {...props} asChild>
 			<Button as="span" variant={variantMap.ellipsis} size={size}>
-				<HiMiniEllipsisHorizontal />
+				<EllipsisIcon />
 			</Button>
 		</ChakraPagination.Ellipsis>
 	);
@@ -120,7 +117,7 @@ export const PaginationPrevTrigger = forwardRef<
 				variant={variantMap.default}
 				size={size}
 			>
-				<HiChevronLeft />
+				<ChevronLeftIcon />
 			</LinkButton>
 		);
 	}
@@ -128,7 +125,7 @@ export const PaginationPrevTrigger = forwardRef<
 	return (
 		<ChakraPagination.PrevTrigger ref={ref} asChild {...props}>
 			<IconButton variant={variantMap.default} size={size}>
-				<HiChevronLeft />
+				<ChevronLeftIcon />
 			</IconButton>
 		</ChakraPagination.PrevTrigger>
 	);
@@ -148,7 +145,7 @@ export const PaginationNextTrigger = forwardRef<
 				variant={variantMap.default}
 				size={size}
 			>
-				<HiChevronRight />
+				<ChevronRightIcon />
 			</LinkButton>
 		);
 	}
@@ -156,7 +153,7 @@ export const PaginationNextTrigger = forwardRef<
 	return (
 		<ChakraPagination.NextTrigger ref={ref} asChild {...props}>
 			<IconButton variant={variantMap.default} size={size}>
-				<HiChevronRight />
+				<ChevronRightIcon />
 			</IconButton>
 		</ChakraPagination.NextTrigger>
 	);
