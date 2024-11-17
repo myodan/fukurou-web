@@ -3,7 +3,7 @@ import { Plus } from "lucide-react";
 import type { FC } from "react";
 import { EpisodeList } from "~/components/episodes/list";
 import { WebtoonDetail } from "~/components/webtoons/detail";
-import { getWebtoon, getWebtoonEpisodes } from "~/libs/api";
+import { getEpisodesByWebtoonId, getWebtoon } from "~/libs/api";
 
 type Props = Readonly<{
 	params: Promise<{ id: string }>;
@@ -15,7 +15,7 @@ const WebtoonDetailPage: FC<Props> = async ({ params, searchParams }) => {
 	const { page = "1" } = await searchParams;
 
 	const webtoon = await getWebtoon(+id);
-	const episodes = await getWebtoonEpisodes(+id, { page: +page });
+	const episodes = await getEpisodesByWebtoonId(+id);
 
 	return (
 		<Container display="flex" flexDirection="column" gap="4" marginY="4">
