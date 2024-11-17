@@ -11,7 +11,7 @@ type Props = Readonly<{
 	searchParams: Promise<{ tab?: string }>;
 }>;
 
-const WebtoonPage: FC<Props> = async ({ searchParams }) => {
+const WebtoonsPage: FC<Props> = async ({ searchParams }) => {
 	const { tab = "all" } = await searchParams;
 
 	if (!["all", "mon", "tue", "wed", "thu", "fri", "sat", "sun"].includes(tab)) {
@@ -34,4 +34,4 @@ const WebtoonPage: FC<Props> = async ({ searchParams }) => {
 	);
 };
 
-export default WebtoonPage;
+export default WebtoonsPage;
