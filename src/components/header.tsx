@@ -27,7 +27,7 @@ export const Header: FC = async () => {
 			>
 				<Logo />
 				<HStack as="nav" gap="4" flexGrow="1">
-					<NextLink href="/webtoons" passHref>
+					<NextLink href="/webtoons" scroll={false} passHref>
 						<Button variant="ghost">웹툰</Button>
 					</NextLink>
 				</HStack>
