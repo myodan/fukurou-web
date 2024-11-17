@@ -7,12 +7,10 @@ import { getEpisodesByWebtoonId, getWebtoon } from "~/libs/api";
 
 type Props = Readonly<{
 	params: Promise<{ id: string }>;
-	searchParams: Promise<{ page: string }>;
 }>;
 
-const WebtoonDetailPage: FC<Props> = async ({ params, searchParams }) => {
+const WebtoonPage: FC<Props> = async ({ params }) => {
 	const { id } = await params;
-	const { page = "1" } = await searchParams;
 
 	const webtoon = await getWebtoon(+id);
 	const episodes = await getEpisodesByWebtoonId(+id);
@@ -35,4 +33,4 @@ const WebtoonDetailPage: FC<Props> = async ({ params, searchParams }) => {
 	);
 };
 
-export default WebtoonDetailPage;
+export default WebtoonPage;
