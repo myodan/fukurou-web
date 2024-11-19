@@ -8,7 +8,7 @@ export interface Payload {
 	iat: number;
 	exp: number;
 	username: string;
-	avatarUrl: string | null;
+	avatarUrl?: string;
 	role: string;
 }
 
@@ -22,7 +22,7 @@ export interface User {
 	username: string;
 	password: string;
 	role: string;
-	avatarUrl: string;
+	avatarUrl?: string;
 	createdAt: string;
 	updatedAt: string;
 }
@@ -69,7 +69,7 @@ export async function getToken() {
 	const accessToken = cookieStore.get("access-token")?.value;
 
 	if (!accessToken) {
-		return null;
+		return;
 	}
 
 	const decodedToken = jwtDecode<Payload>(accessToken);
