@@ -3,21 +3,21 @@
 import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
 
-export interface Payload {
+export type Payload = {
 	sub: number;
 	iat: number;
 	exp: number;
 	username: string;
 	avatarUrl?: string;
 	role: string;
-}
+};
 
-export interface Credentials {
+export type Credentials = {
 	username: string;
 	password: string;
-}
+};
 
-export interface User {
+export type User = {
 	id: number;
 	username: string;
 	password: string;
@@ -25,9 +25,9 @@ export interface User {
 	avatarUrl?: string;
 	createdAt: string;
 	updatedAt: string;
-}
+};
 
-export async function signIn(credentials: Credentials) {
+export const signIn = async (credentials: Credentials) => {
 	const cookieStore = await cookies();
 
 	const response = await fetch(
@@ -56,13 +56,13 @@ export async function signIn(credentials: Credentials) {
 		sameSite: "strict",
 		expires: decodedToken.exp * 1000,
 	});
-}
+};
 
-export async function signOut() {
+export const signOut = async () => {
 	const cookieStore = await cookies();
 
 	cookieStore.delete("access-token");
-}
+};
 
 export async function getToken() {
 	const cookieStore = await cookies();
@@ -77,7 +77,7 @@ export async function getToken() {
 	return decodedToken;
 }
 
-export async function getProfile() {
+export const getProfile = async () => {
 	const cookieStore = await cookies();
 
 	const response = await fetch(
@@ -99,4 +99,4 @@ export async function getProfile() {
 	const data: User = await response.json();
 
 	return data;
-}
+};

@@ -1,6 +1,6 @@
 "use server";
 
-export interface Episode {
+export type Episode = {
 	id: number;
 	episodeNumber: number;
 	subtitle: string;
@@ -9,9 +9,9 @@ export interface Episode {
 	contents: string[];
 	createdAt: Date;
 	updatedAt: Date;
-}
+};
 
-export async function getEpisodesByWebtoonId(webtoonId: number) {
+export const getEpisodesByWebtoonId = async (webtoonId: number) => {
 	const response = await fetch(
 		`${process.env.FUKUROU_API_BASE_URL}/webtoons/${webtoonId}/episodes`,
 		{
@@ -24,9 +24,9 @@ export async function getEpisodesByWebtoonId(webtoonId: number) {
 	const data: Episode[] = await response.json();
 
 	return data;
-}
+};
 
-export async function getEpisode(id: number) {
+export const getEpisode = async (id: number) => {
 	const response = await fetch(
 		`${process.env.FUKUROU_API_BASE_URL}/episodes/${id}`,
 		{
@@ -39,4 +39,4 @@ export async function getEpisode(id: number) {
 	const data: Episode = await response.json();
 
 	return data;
-}
+};
