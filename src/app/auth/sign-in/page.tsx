@@ -4,7 +4,7 @@ import { SignInForm } from "./sign-in-form";
 
 const SignInPage: FC = () => {
 	return (
-		<Container my="4">
+		<Container marginY="4">
 			<SignInForm />
 		</Container>
 	);

@@ -5,7 +5,7 @@ import { EmptyState } from "~/components/ui/empty-state";
 
 const NotFoundPage: FC = () => {
 	return (
-		<Container>
+		<Container paddingY="4">
 			<EmptyState
 				icon={<TriangleAlert />}
 				title="요청하신 페이지를 찾을 수 없습니다."

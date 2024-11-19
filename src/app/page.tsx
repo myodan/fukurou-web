@@ -1,4 +1,12 @@
-import { Container, For, Grid, HStack, Stack, VStack } from "@chakra-ui/react";
+import {
+	Container,
+	For,
+	Grid,
+	HStack,
+	Heading,
+	Stack,
+	VStack,
+} from "@chakra-ui/react";
 import { ArrowRight } from "lucide-react";
 import NextLink from "next/link";
 import type { FC } from "react";
@@ -14,6 +22,7 @@ const HomePage: FC = async () => {
 			<Stack py="4" gap="4">
 				<VStack alignItems="stretch">
 					<HStack justify="space-between">
+						<Heading>최근 업데이트 웹툰</Heading>
 						<NextLink
 							href={{
 								pathname: "/webtoons",

@@ -4,7 +4,7 @@ import { SignUpForm } from "./sign-up-form";
 
 const SignUpPage: FC = () => {
 	return (
-		<Container>
+		<Container marginY="4">
 			<SignUpForm />
 		</Container>
 	);
