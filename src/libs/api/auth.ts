@@ -42,7 +42,7 @@ export const signIn = async (credentials: Credentials) => {
 	);
 
 	if (!response.ok) {
-		throw new Error("Invalid credentials");
+		return false;
 	}
 
 	const { accessToken }: { accessToken: string } = await response.json();
@@ -56,6 +56,27 @@ export const signIn = async (credentials: Credentials) => {
 		sameSite: "strict",
 		expires: decodedToken.exp * 1000,
 	});
+
+	return true;
+};
+
+export const signUp = async (credentials: Credentials) => {
+	const response = await fetch(
+		`${process.env.FUKUROU_API_BASE_URL}/auth/sign-up`,
+		{
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(credentials),
+		},
+	);
+
+	if (!response.ok) {
+		return false;
+	}
+
+	return true;
 };
 
 export const signOut = async () => {
