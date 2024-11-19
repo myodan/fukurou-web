@@ -1,4 +1,5 @@
 import { Flex, Image, Text } from "@chakra-ui/react";
+import NextImage from "next/image";
 import NextLink from "next/link";
 import type { FC } from "react";
 import type { Episode } from "~/libs/api";
@@ -19,13 +20,9 @@ export const EpisodeListItem: FC<Props> = ({ episode }) => {
 				_hover={{ background: "bg.subtle" }}
 			>
 				<Flex height="16" aspectRatio={16 / 9} position={"relative"}>
-					<Image
-						src={episode.thumbnailUrl}
-						alt="thumbnail"
-						loading="lazy"
-						rounded={"md"}
-						objectFit={"cover"}
-					/>
+					<Image rounded={"md"} objectFit={"cover"} asChild>
+						<NextImage src={episode.thumbnailUrl} alt="thumbnail" fill />
+					</Image>
 				</Flex>
 				<Flex
 					flexBasis={"full"}

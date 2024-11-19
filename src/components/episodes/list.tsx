@@ -4,8 +4,8 @@ import { Center, For, HStack, Stack } from "@chakra-ui/react";
 import { type FC, useState } from "react";
 import type { Episode } from "~/libs/api";
 import {
-	PaginationItems,
 	PaginationNextTrigger,
+	PaginationPageText,
 	PaginationPrevTrigger,
 	PaginationRoot,
 } from "../ui/pagination";
@@ -33,13 +33,11 @@ export const EpisodeList: FC<Props> = ({ episodes }) => {
 			<Center>
 				<PaginationRoot
 					count={episodes.length}
-					siblingCount={2}
-					pageSize={10}
 					onPageChange={(e) => setPage(e.page)}
 				>
 					<HStack>
 						<PaginationPrevTrigger />
-						<PaginationItems />
+						<PaginationPageText format="short" />
 						<PaginationNextTrigger />
 					</HStack>
 				</PaginationRoot>
