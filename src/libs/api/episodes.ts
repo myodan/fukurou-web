@@ -16,7 +16,7 @@ export async function getEpisodesByWebtoonId(webtoonId: number) {
 		`${process.env.FUKUROU_API_BASE_URL}/webtoons/${webtoonId}/episodes`,
 		{
 			next: {
-				revalidate: 3600,
+				revalidate: process.env.NODE_ENV === "development" ? 0 : 3600,
 			},
 		},
 	);
@@ -31,7 +31,7 @@ export async function getEpisode(id: number) {
 		`${process.env.FUKUROU_API_BASE_URL}/episodes/${id}`,
 		{
 			next: {
-				revalidate: 3600,
+				revalidate: process.env.NODE_ENV === "development" ? 0 : 3600,
 			},
 		},
 	);

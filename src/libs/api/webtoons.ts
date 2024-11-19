@@ -21,7 +21,7 @@ export interface Tag {
 export async function getWebtoons() {
 	const response = await fetch(`${process.env.FUKUROU_API_BASE_URL}/webtoons`, {
 		next: {
-			revalidate: 3600,
+			revalidate: process.env.NODE_ENV === "development" ? 0 : 3600,
 		},
 	});
 
@@ -35,7 +35,7 @@ export async function getWebtoon(id: number) {
 		`${process.env.FUKUROU_API_BASE_URL}/webtoons/${id}`,
 		{
 			next: {
-				revalidate: 3600,
+				revalidate: process.env.NODE_ENV === "development" ? 0 : 3600,
 			},
 		},
 	);
