@@ -1,11 +1,11 @@
 "use client";
 
-import { HStack, Link, Stack, Text } from "@chakra-ui/react";
-import NextLink from "next/link";
-import type { FC } from "react";
+import { HStack, Stack, Text } from "@chakra-ui/react";
+import { type FC, useState } from "react";
 import { type Payload, signOut } from "~/libs/api/auth";
 import { Avatar } from "../ui/avatar";
 import { Button } from "../ui/button";
+import { LinkButton } from "../ui/link-button";
 import {
 	PopoverArrow,
 	PopoverBody,
@@ -13,26 +13,29 @@ import {
 	PopoverRoot,
 	PopoverTrigger,
 } from "../ui/popover";
+import { ColorModeSegment } from "./color-mode-segment";
 
 type UserMenuProps = Readonly<{
 	token?: Payload;
 }>;
 
 export const UserMenu: FC<UserMenuProps> = ({ token }) => {
+	const [open, setOpen] = useState(false);
+
 	return token ? (
-		<>
-			<PopoverRoot>
-				<PopoverTrigger>
-					<Avatar
-						src={token.avatarUrl}
-						shape="rounded"
-						cursor="pointer"
-						variant="outline"
-					/>
-				</PopoverTrigger>
-				<PopoverContent>
-					<PopoverArrow />
-					<PopoverBody padding="2">
+		<PopoverRoot open={open} onOpenChange={(e) => setOpen(e.open)}>
+			<PopoverTrigger>
+				<Avatar
+					src={token.avatarUrl}
+					shape="rounded"
+					cursor="pointer"
+					variant="outline"
+				/>
+			</PopoverTrigger>
+			<PopoverContent>
+				<PopoverArrow />
+				<PopoverBody padding="3">
+					<Stack gap="4">
 						<HStack justifyContent="space-between">
 							<Avatar src={token.avatarUrl} shape="rounded" variant="outline" />
 							<Stack gap="0" flexGrow="1">
@@ -42,23 +45,42 @@ export const UserMenu: FC<UserMenuProps> = ({ token }) => {
 							<Button
 								variant="outline"
 								size="xs"
-								onClick={async () => await signOut()}
+								onClick={async () => {
+									setOpen(false);
+									await signOut();
+								}}
 							>
 								로그아웃
 							</Button>
 						</HStack>
-					</PopoverBody>
-				</PopoverContent>
-			</PopoverRoot>
-		</>
+						<HStack justifyContent="space-between">
+							<Text paddingX="2" paddingY="1">
+								테마
+							</Text>
+							<ColorModeSegment />
+						</HStack>
+						<Stack>
+							<LinkButton
+								href="/account/settings"
+								size="xs"
+								variant="outline"
+								onClick={() => setOpen(false)}
+							>
+								계정 설정
+							</LinkButton>
+						</Stack>
+					</Stack>
+				</PopoverBody>
+			</PopoverContent>
+		</PopoverRoot>
 	) : (
 		<>
-			<Link asChild>
-				<NextLink href="/auth/sign-in">로그인</NextLink>
-			</Link>
-			<Link asChild>
-				<NextLink href="/auth/sign-up">회원가입</NextLink>
-			</Link>
+			<LinkButton href="/auth/sign-in" variant="outline">
+				로그인
+			</LinkButton>
+			<LinkButton href="/auth/sign-up" variant="outline">
+				회원가입
+			</LinkButton>
 		</>
 	);
 };

@@ -1,7 +1,6 @@
 import { Container, type ContainerProps, Flex, HStack } from "@chakra-ui/react";
 import type { FC } from "react";
 import { getToken } from "~/libs/api/auth";
-import { ColorModeButton } from "../ui/color-mode";
 import { LogoWithLink } from "./logo";
 import { UserMenu } from "./user-menu";
 
@@ -30,7 +29,6 @@ export const Header: FC<HeaderProps> = async ({ children, ...props }) => {
 				{children}
 				<HStack gap="2">
 					<UserMenu token={token} />
-					<ColorModeButton />
 				</HStack>
 			</Container>
 		</Flex>
